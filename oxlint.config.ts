@@ -30,9 +30,9 @@ export default defineConfig({
     // コールバックで値を返し忘れた配列処理を防ぐ。
     "array-callback-return": "error",
     // 制御構文の波括弧を必須にして、条件追加時の事故を防ぐ。
-    "curly": "error",
+    curly: "error",
     // 暗黙の型変換による比較バグを防ぐ。ただし null/undefined の緩い比較は許可する。
-    "eqeqeq": ["error", "always", { null: "ignore" }],
+    eqeqeq: ["error", "always", { null: "ignore" }],
     // 本番 UI にブラウザアラートが混入するのを防ぐ。
     "no-alert": "error",
     // デバッグログの残留を警告する。警告・エラー出力は運用上必要なため許可する。
