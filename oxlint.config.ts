@@ -57,12 +57,16 @@ export default defineConfig({
     "no-undef": "error",
     // 未使用コードを残さず、実装漏れやリファクタ漏れを検出する。
     "no-unused-vars": "error",
+    // 関数定義はアロー関数式を優先し、this の束縛差を避ける。
+    "func-style": ["warn", "expression", { allowArrowFunctions: true }],
     // 関数スコープの var を禁止し、let/const に統一する。
     "no-var": "error",
     // 再代入しない変数を const にして意図を固定する。
     "prefer-const": "error",
     // 文字列連結よりテンプレートリテラルを優先し、可読性を上げる。
     "prefer-template": "warn",
+    // コールバックはアロー関数で書き、短い処理の読み方を統一する。
+    "prefer-arrow-callback": "warn",
 
     // 不正な re-export を検出する。
     "import/export": "error",

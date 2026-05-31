@@ -10,7 +10,7 @@ type Props = {
   posts: CollectionEntry<"blog">[];
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const allPosts = await getCollection("blog");
   const posts = allPosts.filter((post) => post.data.draft !== true);
   const tags = [...new Set(posts.flatMap((post) => post.data.tags))].toSorted((a, b) =>
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
       posts: posts.filter((post) => post.data.tags.includes(tag)),
     },
   }));
-}
+};
 
 const { tag, posts } = Astro.props as Props;
 ---
