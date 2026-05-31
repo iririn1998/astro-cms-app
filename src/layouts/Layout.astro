@@ -8,7 +8,7 @@ type Props = {
 
 const {
   title = "ノート日和",
-  description = "Markdown files powered by Astro Content Collections.",
+  description = "日々のメモや考えをまとめるブログです。",
 } = Astro.props;
 ---
 
@@ -46,11 +46,6 @@ const {
         <slot />
       </main>
 
-      <footer class="border-t border-zinc-200">
-        <div class="mx-auto max-w-6xl px-5 py-8 text-sm text-zinc-500 md:px-8">
-          Markdown powered by Astro Content Collections.
-        </div>
-      </footer>
     </div>
   </body>
 </html>
