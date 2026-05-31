@@ -15,8 +15,9 @@ tags:
 不正な日付や不足したタイトルは、開発中に早く見つけられます。
 
 ```ts
-import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+import { defineCollection } from "astro:content";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
@@ -41,7 +42,7 @@ const blog = defineCollection({
 4. タグごとに記事一覧を描画する
 
 ```ts
-const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].toSorted();
 ```
 
 ## 下書きの扱い

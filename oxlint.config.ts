@@ -18,6 +18,7 @@ export default defineConfig({
     perf: "warn",
   },
   env: {
+    astro: true,
     browser: true,
     es2024: true,
     node: true,
@@ -26,6 +27,15 @@ export default defineConfig({
     typeAware: true,
   },
   ignorePatterns: ["dist", ".astro"],
+  overrides: [
+    {
+      files: ["**/*.astro"],
+      rules: {
+        // Astro layout files import CSS for side effects.
+        "import/no-unassigned-import": "off",
+      },
+    },
+  ],
   rules: {
     // コールバックで値を返し忘れた配列処理を防ぐ。
     "array-callback-return": "error",

@@ -13,7 +13,7 @@ interface Props {
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
   const posts = allPosts.filter((post) => post.data.draft !== true);
-  const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b) =>
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))].toSorted((a, b) =>
     a.localeCompare(b, "ja"),
   );
 

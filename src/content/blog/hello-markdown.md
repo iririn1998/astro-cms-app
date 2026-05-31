@@ -31,7 +31,7 @@ tags:
 ```ts
 const posts = allPosts
   .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .toSorted((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ```
 
 ## 次に追加したいもの

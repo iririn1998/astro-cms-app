@@ -12,7 +12,7 @@ const tagCounts = posts.reduce((counts, post) => {
 
   return counts;
 }, new Map<string, number>());
-const tags = [...tagCounts.entries()].sort(([a], [b]) => a.localeCompare(b, "ja"));
+const tags = [...tagCounts.entries()].toSorted(([a], [b]) => a.localeCompare(b, "ja"));
 ---
 
 <Layout title="Tags | Astro CMS Blog" description="記事タグの一覧です。">
