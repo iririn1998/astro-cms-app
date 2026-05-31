@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "cf:dev": "pnpm build && wrangler dev",
+    "deploy": "pnpm build && wrangler deploy",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint",
@@ -24,7 +26,8 @@
   "devDependencies": {
     "oxfmt": "^0.52.0",
     "oxlint": "^1.67.0",
-    "oxlint-tsgolint": "^0.23.0"
+    "oxlint-tsgolint": "^0.23.0",
+    "wrangler": "^4.95.0"
   },
   "engines": {
     "node": ">=22.18.0"

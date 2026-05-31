@@ -20,12 +20,12 @@
 
 ```yaml
 ---
-title: "記事タイトル"          # 必須
-description: "記事の概要"       # 任意
-pubDate: 2026-05-31           # 必須（公開日）
-updatedDate: 2026-06-01       # 任意（更新日）
-tags: ["数学", "幾何学"]       # 任意（既定値: []）
-draft: false                  # 任意（既定値: false）
+title: "記事タイトル" # 必須
+description: "記事の概要" # 任意
+pubDate: 2026-05-31 # 必須（公開日）
+updatedDate: 2026-06-01 # 任意（更新日）
+tags: ["数学", "幾何学"] # 任意（既定値: []）
+draft: false # 任意（既定値: false）
 ---
 ```
 
@@ -63,10 +63,36 @@ draft: false                  # 任意（既定値: false）
 | `pnpm dev`          | 開発サーバーを `localhost:4321` で起動 |
 | `pnpm build`        | 本番ビルドを `./dist/` に出力          |
 | `pnpm preview`      | ビルド結果をローカルでプレビュー       |
+| `pnpm cf:dev`       | Workers 環境でビルド結果をローカル確認 |
+| `pnpm deploy`       | Cloudflare Workers にデプロイ          |
 | `pnpm lint`         | oxlint でチェック                      |
 | `pnpm lint:fix`     | oxlint で自動修正                      |
 | `pnpm format`       | oxfmt で整形                           |
 | `pnpm format:check` | oxfmt で整形チェック                   |
+
+## ☁️ Cloudflare Workers へのデプロイ
+
+このサイトは全ページをビルド時に静的生成するため、Astro の Cloudflare adapter は使用せず、`wrangler.jsonc` の `assets.directory` で `./dist` を Workers の静的アセットとして配信します。`404.astro` から生成される `404.html` は、`not_found_handling: "404-page"` でカスタム 404 として配信されます。
+
+初回のみ Cloudflare にログインします。
+
+```sh
+pnpm wrangler login
+```
+
+Workers と同じ配信挙動でローカル確認する場合:
+
+```sh
+pnpm cf:dev
+```
+
+デプロイする場合:
+
+```sh
+pnpm deploy
+```
+
+Worker 名や互換日、独自ドメインのルーティングは `wrangler.jsonc` で管理します。
 
 ## 🛠 技術スタック
 
