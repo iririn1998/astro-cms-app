@@ -15,7 +15,7 @@ const tagCounts = posts.reduce((counts, post) => {
 const tags = [...tagCounts.entries()].toSorted(([a], [b]) => a.localeCompare(b, "ja"));
 ---
 
-<Layout title="Tags | Astro CMS Blog" description="記事タグの一覧です。">
+<Layout title="Tags | ノート日和" description="記事タグの一覧です。">
   <section class="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
     <header>
       <p class="text-sm font-semibold text-cyan-700">Tags</p>
