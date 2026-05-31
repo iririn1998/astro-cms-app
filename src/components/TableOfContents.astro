@@ -1,13 +1,13 @@
 ---
-interface Heading {
+type Heading = {
   depth: number;
   slug: string;
   text: string;
-}
+};
 
-interface Props {
+type Props = {
   headings: Heading[];
-}
+};
 
 const { headings } = Astro.props;
 const tocItems = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);

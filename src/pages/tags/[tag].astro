@@ -5,10 +5,10 @@ import { getCollection } from "astro:content";
 import PostCard from "../../components/PostCard.astro";
 import Layout from "../../layouts/Layout.astro";
 
-interface Props {
+type Props = {
   tag: string;
   posts: CollectionEntry<"blog">[];
-}
+};
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");

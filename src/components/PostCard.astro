@@ -3,9 +3,9 @@ import type { CollectionEntry } from "astro:content";
 
 import FormattedDate from "./FormattedDate.astro";
 
-interface Props {
+type Props = {
   post: CollectionEntry<"blog">;
-}
+};
 
 const { post } = Astro.props;
 const tags = post.data.tags;

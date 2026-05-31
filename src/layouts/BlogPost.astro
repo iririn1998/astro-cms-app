@@ -5,16 +5,16 @@ import FormattedDate from "../components/FormattedDate.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 import Layout from "./Layout.astro";
 
-interface Heading {
+type Heading = {
   depth: number;
   slug: string;
   text: string;
-}
+};
 
-interface Props {
+type Props = {
   post: CollectionEntry<"blog">;
   headings: Heading[];
-}
+};
 
 const { post, headings } = Astro.props;
 ---

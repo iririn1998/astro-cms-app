@@ -132,8 +132,8 @@ export default defineConfig({
 
     // 危険な型アサーションの書き方を制限する。
     "typescript/consistent-type-assertions": "error",
-    // オブジェクト形状は interface を優先し、拡張しやすくする。
-    "typescript/consistent-type-definitions": ["warn", "interface"],
+    // 型定義は type に統一し、union/intersection と同じ表記に揃える。
+    "typescript/consistent-type-definitions": ["warn", "type"],
     // 型 export の一貫性を保つ。
     "typescript/consistent-type-exports": "warn",
     // 型のみの import を type import にして実行時依存を減らす。
