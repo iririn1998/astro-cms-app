@@ -1,0 +1,31 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const tocItems = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+
+{
+  tocItems.length > 0 && (
+    <nav aria-label="目次" class="rounded-lg border border-zinc-200 bg-white p-5">
+      <h2 class="text-sm font-semibold text-zinc-950">目次</h2>
+      <ol class="mt-4 space-y-2 text-sm">
+        {tocItems.map((heading) => (
+          <li class={heading.depth === 3 ? "pl-4" : undefined}>
+            <a class="text-zinc-600 hover:text-cyan-700" href={`#${heading.slug}`}>
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}

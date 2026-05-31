@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import FormattedDate from "../components/FormattedDate.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import Layout from "./Layout.astro";
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  headings: Heading[];
+}
+
+const { post, headings } = Astro.props;
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:px-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
+    <article class="min-w-0">
+      <a class="text-sm font-medium text-cyan-700 hover:text-cyan-900" href="/">&larr; 記事一覧</a>
+
+      <header class="mt-6 border-b border-zinc-200 pb-8">
+        <div class="text-sm text-zinc-500">
+          <FormattedDate date={post.data.pubDate} />
+          {
+            post.data.updatedDate && (
+              <span>
+                {" "}
+                / 更新: <FormattedDate date={post.data.updatedDate} />
+              </span>
+            )
+          }
+        </div>
+
+        <h1 class="mt-4 text-3xl font-bold text-zinc-950 md:text-5xl">{post.data.title}</h1>
+
+        {
+          post.data.description && (
+            <p class="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">{post.data.description}</p>
+          )
+        }
+
+        {
+          post.data.tags.length > 0 && (
+            <ul class="mt-6 flex flex-wrap gap-2">
+              {post.data.tags.map((tag) => (
+                <li>
+                  <a
+                    class="rounded-md bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800 hover:bg-amber-100"
+                    href={`/tags/${encodeURIComponent(tag)}/`}
+                  >
+                    #{tag}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </header>
+
+      <div class="mt-8 lg:hidden">
+        <TableOfContents headings={headings} />
+      </div>
+
+      <div class="prose prose-zinc mt-8 max-w-none prose-pre:bg-transparent dark:prose-invert">
+        <slot />
+      </div>
+    </article>
+
+    <aside class="hidden lg:block">
+      <div class="sticky top-8">
+        <TableOfContents headings={headings} />
+      </div>
+    </aside>
+  </div>
+</Layout>

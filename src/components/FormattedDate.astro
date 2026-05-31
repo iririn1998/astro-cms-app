@@ -1,0 +1,12 @@
+---
+interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+const formattedDate = new Intl.DateTimeFormat("ja-JP", {
+  dateStyle: "long",
+}).format(date);
+---
+
+<time datetime={date.toISOString()}>{formattedDate}</time>
