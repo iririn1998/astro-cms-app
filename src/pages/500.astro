@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="サーバーエラー | ノート日和"
+  description="サーバー側で問題が発生しました。"
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-6xl flex-col items-center justify-center px-5 py-16 text-center md:px-8">
+    <p class="text-7xl font-bold text-cyan-500 md:text-8xl">500</p>
+    <h1 class="mt-6 text-3xl font-bold text-zinc-950 md:text-4xl">
+      サーバーエラーが発生しました
+    </h1>
+    <p class="mt-4 max-w-md text-lg leading-8 text-zinc-600">
+      予期しないエラーが発生しました。しばらく時間をおいてから、もう一度お試しください。
+    </p>
+    <a
+      href="/"
+      class="mt-8 rounded-md bg-cyan-500 px-5 py-3 text-sm font-medium text-white hover:bg-cyan-600"
+    >
+      ホームに戻る
+    </a>
+  </section>
+</Layout>

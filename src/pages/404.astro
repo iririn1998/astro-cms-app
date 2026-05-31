@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="ページが見つかりません | ノート日和"
+  description="お探しのページは見つかりませんでした。"
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-6xl flex-col items-center justify-center px-5 py-16 text-center md:px-8">
+    <p class="text-7xl font-bold text-cyan-500 md:text-8xl">404</p>
+    <h1 class="mt-6 text-3xl font-bold text-zinc-950 md:text-4xl">
+      ページが見つかりません
+    </h1>
+    <p class="mt-4 max-w-md text-lg leading-8 text-zinc-600">
+      お探しのページは移動または削除されたか、URL が間違っている可能性があります。
+    </p>
+    <a
+      href="/"
+      class="mt-8 rounded-md bg-cyan-500 px-5 py-3 text-sm font-medium text-white hover:bg-cyan-600"
+    >
+      ホームに戻る
+    </a>
+  </section>
+</Layout>
